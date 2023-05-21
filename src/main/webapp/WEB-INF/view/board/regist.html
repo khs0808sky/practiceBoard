@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>게시판 등록페이지</title>
+    </head>
+    <body>
+        <h1>게시글 등록</h1>
+        <form method="post" th:action="@{/board/regist}" th:object="${registForm}">
+            <dl>
+                <dt>제목</dt>
+                <dd>
+                    <input type="text" name="title" th:field="*{title}">
+                    <div th:each="err : ${#fields.errors('title')}" th:text="${err}"></div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>내용</dt>
+                <dd>
+                    <input type="text" name="content" th:field="*{content}">
+                    <div th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
+                </dd>
+            </dl>
+            <button type="submit">등록하기</button>
+        </form>
+        <br>
+        <a th:href="@{/}">메인 화면</a>
+        <a th:href="@{/board/list}">게시글 목록</a>
+    </body>
+</html>
